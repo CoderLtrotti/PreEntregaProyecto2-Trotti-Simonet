@@ -71,7 +71,7 @@ app.use(express.urlencoded({ extended: true }));
 //PRODUCTO.
 
 // Definimos el metodo Get para la ruta /pro
-app.get('/api1/products', async (req, res) => {
+app.get('/api/products', async (req, res) => {
 	
 	try {
 		let allProduct = await productManager.getProductsFromFile();
