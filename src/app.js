@@ -10,6 +10,7 @@ import ProductsManagers from './dao/productManagers.js';
 import router from './routes/carts.js'
 import productRoutes from './routes/products.js';
 import MessageManager from './dao/messageManager.js';
+import viewsRouter from './routes/views.router.js';
 //import router from './routes/products.js';
 
 
@@ -81,6 +82,7 @@ app.post('/api/cart/:cartId/product/:productId', (req, res) => {
 app.use(express.urlencoded({ extended: true }));
 app.use('/apiv2/products', productRoutes);
 app.use('/apiv2/carts', router);
+app.use('/',viewsRouter);
 
 //PRODUCTO.
 
