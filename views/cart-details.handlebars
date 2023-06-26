@@ -1,0 +1,22 @@
+<h1>Carrito de compras</h1>
+
+<div class="cart-products">
+  {{#if cart.products.length}}
+    {{#each cart.products}}
+      <div class="product-card">
+        <h2>{{this.product.name}}</h2>
+        <p>{{this.product.description}}</p>
+        <p>Precio: {{this.product.price}}</p>
+        <p>Cantidad: {{this.quantity}}</p>
+        <form action="/api/cart/{{cart._id}}/products/{{this.product._id}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Eliminar</button>
+        </form>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No hay productos en el carrito.</p>
+  {{/if}}
+</div>
+
+<a href="/products">Seguir comprando</a>

@@ -1,0 +1,58 @@
+<div class="product-list">
+  {{#each products}}
+  <div class="product-card">
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+    <p>Precio: {{price}}</p>
+    <p>Categoría: {{category}}</p>
+    <form action="/apiv2/carts/{{this._id}}/products" method="POST"></form>
+  <input type="hidden" name="product" value="{{this._id}}">
+  <button type="submit">Agregar al carrito</button>
+</form>
+  </div>
+  {{/each}}
+</div>
+
+<!-- Paginación -->
+<div class="pagination">
+  {{#if hasPrevPage}}
+  <a href="/products?page={{prevPage}}">Anterior</a>
+  {{/if}}
+  {{#if hasNextPage}}
+  <a href="/products?page={{nextPage}}">Siguiente</a>
+  {{/if}}
+</div>
+
+<!-- Filtros -->
+<form action="/products" method="GET" class="filter-form">
+  <label for="category">Categoría:</label>
+  <select name="category" id="category">
+    <option value="Juegos de mesa">Juegos de mesa</option>
+    <option value="Peluches">Peluches</option>
+  </select>
+
+  <label for="availability">Disponibilidad:</label>
+  <select name="availability" id="availability">
+    <option value="true">Disponible</option>
+    <option value="false">No disponible</option>
+  </select>
+
+  <label for="minPrice">Precio mínimo:</label>
+  <input type="number" name="minPrice" id="minPrice">
+
+  <label for="maxPrice">Precio máximo:</label>
+  <input type="number" name="maxPrice" id="maxPrice">
+
+  <button type="submit">Filtrar</button>
+</form>
+
+<!-- Ordenamiento -->
+<form action="/products" method="GET" class="sort-form">
+  <label for="sort">Ordenar por precio:</label>
+  <select name="sort" id="sort">
+    <option value="asc">Precio ascendente</option>
+    <option value="desc">Precio descendente</option>
+  </select>
+
+  <button type="submit">Ordenar</button>
+</form>
